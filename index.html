@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="ad.size" content="width=300,height=600">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cube Banner 300x600</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="banner" class="banner" aria-label="Cube Banner 300x600">
+    <div class="scene">
+      <div class="cube" aria-hidden="true">
+        <span id="slide1" class="side side--1">
+          <img src="data/opernball_1.jpg" alt="Opernball 1">
+        </span>
+        <span id="slide2" class="side side--2">
+          <img src="data/opernball_2.jpg" alt="Opernball 2">
+        </span>
+        <span id="slide3" class="side side--3">
+          <img src="data/DFB_1.jpg" alt="DFB 1">
+        </span>
+        <span id="slide4" class="side side--4">
+          <img src="data/DFB_2.jpg" alt="DFB 2">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const getUriParams = (() => {
+    const query = window.location.search.substring(1).split('&');
+    const params = {};
+    query.forEach(pair => {
+      const [key, val] = pair.split('=');
+      if (key && val) params[key.toLowerCase()] = decodeURIComponent(val);
+    });
+    return params;
+  })();
+
+  const links = {
+    1: getUriParams.clicktag1 || "https://www.crif.at",
+    2: getUriParams.clicktag2 || "https://www.crif.at",
+    3: getUriParams.clicktag3 || "https://www.crif.at",
+    4: getUriParams.clicktag4 || "https://www.crif.at"
+  };
+
+  document.getElementById("slide1").addEventListener("click", () => window.open(links[1], "_blank"));
+  document.getElementById("slide2").addEventListener("click", () => window.open(links[2], "_blank"));
+  document.getElementById("slide3").addEventListener("click", () => window.open(links[3], "_blank"));
+  document.getElementById("slide4").addEventListener("click", () => window.open(links[4], "_blank"));
+  </script>
+
+  <noscript>
+    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+      <img src="data/opernball_1.jpg" width="300" height="600" alt="Backup Banner">
+    </a>
+  </noscript>
+</body>
+</html>
